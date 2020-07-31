@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { shade } from 'polished';
 import { Form as Unform } from '@unform/web';
 
 export const Form = styled(Unform)`
@@ -24,6 +25,7 @@ export const Form = styled(Unform)`
     border: 0;
     background: #39b100;
     color: #fff;
+    transition: 0.4s;
 
     display: flex;
     flex-direction: row;
@@ -39,6 +41,15 @@ export const Form = styled(Unform)`
       background: #41c900;
       border-radius: 0 8px 8px 0;
       margin: 0 auto;
+      transition: 0.4s;
+    }
+
+    &:hover{
+      background-color: ${shade(0.2, '#39b100')};
+
+      .icon {
+        background-color: ${shade(0.2, '#41c900')};
+      }
     }
   }
 `;

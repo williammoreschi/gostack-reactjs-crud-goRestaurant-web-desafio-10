@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import ReactModal from 'react-modal';
+import {RiCloseLine} from 'react-icons/ri';
+
+import { Container, ButtonClose } from './styles';
 
 interface IFoodPlate {
   id: number;
@@ -25,7 +27,7 @@ const Modal: React.FC<IModalProps> = ({ children, isOpen, setIsOpen }) => {
   }, [isOpen]);
 
   return (
-    <ReactModal
+    <Container
       shouldCloseOnOverlayClick={!false}
       onRequestClose={setIsOpen}
       isOpen={modalStatus}
@@ -41,7 +43,6 @@ const Modal: React.FC<IModalProps> = ({ children, isOpen, setIsOpen }) => {
           background: '#F0F0F5',
           color: '#000000',
           borderRadius: '8px',
-          width: '736px',
           border: 'none',
         },
         overlay: {
@@ -49,8 +50,9 @@ const Modal: React.FC<IModalProps> = ({ children, isOpen, setIsOpen }) => {
         },
       }}
     >
+      <ButtonClose onClick={setIsOpen} ><RiCloseLine /></ButtonClose>
       {children}
-    </ReactModal>
+    </Container>
   );
 };
 

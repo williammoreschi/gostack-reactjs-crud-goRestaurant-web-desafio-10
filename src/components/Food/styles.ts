@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { shade } from 'polished';
 
 interface IFoodPlateProps {
   available: boolean;
@@ -7,6 +8,11 @@ interface IFoodPlateProps {
 export const Container = styled.div<IFoodPlateProps>`
   background: #f0f0f5;
   border-radius: 8px;
+  transition: 0.4s;
+
+  &:hover{
+    transform: scale(1.02);
+  }
 
   header {
     background: #ffb84d;
@@ -25,6 +31,15 @@ export const Container = styled.div<IFoodPlateProps>`
     img {
       pointer-events: none;
       user-select: none;
+    }
+
+    @media(max-width: 460px) {
+      height:auto;
+      display:flex;
+
+      img{
+        max-width: 100%;
+      }
     }
   }
 
@@ -71,14 +86,27 @@ export const Container = styled.div<IFoodPlateProps>`
         border-radius: 8px;
         display: flex;
         border: none;
-        transition: 0.1s;
+        transition: 0.4s;
 
         svg {
           color: #3d3d4d;
         }
 
+        &:hover {
+          background-color: #2196F3;
+
+          svg {
+            color: #fff;
+          }
+        }
+
+
         & + button {
           margin-left: 6px;
+
+          &:hover {
+          background-color: #c72828;
+          }
         }
       }
     }
@@ -116,6 +144,10 @@ export const Container = styled.div<IFoodPlateProps>`
           transition: 0.4s;
           border-radius: 16px;
 
+          &:hover {
+            background-color: ${shade(0.2, '#c72828')};
+          }
+
           &:before {
             position: absolute;
             content: '';
@@ -132,6 +164,10 @@ export const Container = styled.div<IFoodPlateProps>`
 
         input:checked + .slider {
           background-color: #39b100;
+
+          &:hover {
+            background-color: ${shade(0.2, '#39b100')};
+          }
         }
 
         input:focus + .slider {
@@ -142,6 +178,23 @@ export const Container = styled.div<IFoodPlateProps>`
           -webkit-transform: translateX(32px);
           -ms-transform: translateX(32px);
           transform: translateX(32px);
+        }
+      }
+    }
+
+    @media(max-width: 450px) {
+      flex-direction:column;
+
+      div.icon-container{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 30px;
+        width: 100%;
+
+        button{
+          flex:1;
+          justify-content:center;
+          margin-bottom:20px;
         }
       }
     }
